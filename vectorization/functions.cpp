@@ -29,3 +29,13 @@ void LineVectorization(const cv::Mat& src, cv::Mat& result, int color) {
 		line(result, cv::Point(oneLine[0], oneLine[1]), cv::Point(oneLine[2], oneLine[3]), color, 3, cv::LINE_AA);  //megrajzolja a vonalakat
 	}
 }
+double LineVectorLenght(const cv::Vec4i& v) {
+	return sqrt(pow(v[0] - v[2], 2) + pow(v[1] - v[3], 2));
+}
+double LineVectorAngle(const cv::Vec4i& v) {
+	return asin(abs(v[1] - v[3]) / LineVectorLenght(v));
+}
+
+double LineVectorAngle(const cv::Vec4i& v1, const cv::Vec4i& v2) {
+	return abs(LineVectorAngle(v1) - LineVectorAngle(v2));
+}
