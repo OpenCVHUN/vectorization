@@ -1,8 +1,8 @@
 ﻿#pragma once
 #include <iostream>
 #include <opencv2\opencv.hpp>
-
 #include "functions.h"
+#include "test.h"
 
 
 int main(int argc, char** argv)
@@ -37,6 +37,8 @@ int main(int argc, char** argv)
 	imshow("Source", src);
 	imshow("Colored lines", resultC3);
 	imshow("White lines", result);
+
+	IsConnectedTest();
 
 	// Wait and Exit
 	cv::waitKey();

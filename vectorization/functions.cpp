@@ -39,3 +39,23 @@ double LineVectorAngle(const cv::Vec4i& v) {
 double LineVectorAngle(const cv::Vec4i& v1, const cv::Vec4i& v2) {
 	return abs(LineVectorAngle(v1) - LineVectorAngle(v2));
 }
+
+bool IsConnected(const cv::Vec4i& v1, const cv::Vec4i& v2, int Epsylon) {
+	//#Prosto megoldas, 4 lehetséges kombinációra létrehozok 4 vektort, és kiértékelem a távolságokat.
+	//Ha hibahatáron belül van, akkor elfogadom, hogy ők csaktlakoznak egymáshoz.
+	cv::Vec4i AC = { v1[2],v1[3],v2[0],v2[1] };
+	cv::Vec4i AD = { v1[2],v1[3],v2[2],v2[3] };
+	cv::Vec4i BC = { v1[0],v1[1],v2[0],v2[1] };
+	cv::Vec4i BD = { v1[0],v1[1],v2[2],v2[3] };
+	if (LineVectorLenght(AC) < Epsylon ||
+		LineVectorLenght(AD) < Epsylon ||
+		LineVectorLenght(BC) < Epsylon ||
+		LineVectorLenght(BD) < Epsylon
+		) {
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
