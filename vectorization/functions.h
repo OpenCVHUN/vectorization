@@ -5,3 +5,5 @@
 void LineVectorization(const cv::Mat & src, cv::Mat & result, cv::Scalar color);
 
 void LineVectorization(const cv::Mat & src, cv::Mat & result, int color);
+
+double LineVectorLenght(const cv::Vec4i& v);
